@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Municipalidad de Brandsen - Portal Oficial</title>
+    <style>
+        :root {
+            --primary-color: #1b4332; /* Verde institucional */
+            --secondary-color: #0077b6; /* Azul institucional */
+            --accent-color: #2d6a4f;
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --white: #ffffff;
+            --error-bg: #ffe3e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Barra superior / Sticky */
+        .sticky-emergencias {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Cabecera */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area img {
+            height: 50px;
+        }
+
+        .logo-area h1 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 5px;
+        }
+
+        .search-bar input {
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            width: 220px;
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Menú de navegación */
+        nav {
+            background-color: var(--secondary-color);
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 18px;
+            display: block;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        /* Banner Principal */
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-banner p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 25px auto;
+        }
+
+        .btn-action {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 8px;
+        }
+
+        /* Accesos Rápidos Trámites */
+        .tramites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .tramite-item {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .tramite-item h4 {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .tramite-item p {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra Superior Sticky: Guardia y Salud -->
+    <div class="sticky-emergencias">
+        <span>🚨 Guardias y Emergencias: Hospital / CAPS / Defensa Civil</span>
+        <span>📍 Brandsen, Buenos Aires | ⛅ 18°C</span>
+    </div>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <!-- Simulación de Escudo / Bandera -->
+                <div style="background: #1b4332; color: white; padding: 10px; font-weight: bold; border-radius: 4px;">BRANDSEN</div>
+                <h1>Municipalidad de Brandsen</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="¿Qué estás buscando?">
+                <button>Buscar</button>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Ingresos Públicos (Tasas)</a></li>
+                <li><a href="#">Transparencia</a></li>
+                <li><a href="#">Boletín Oficial</a></li>
+                <li><a href="#">Guía de Comercios</a></li>
+                <li><a href="#">Atención al Vecino</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner Principal (Prioridad: Tasas y Obras) -->
+    <section class="hero-banner">
+        <h2>Un Municipio Presente, Activo y Creativo</h2>
+        <p>Pagá tus tasas e impuestos municipales de forma online. Tus aportes se traducen en más obras, mejores servicios y una gestión transparente.</p>
+        <a href="#" class="btn-action">Liquidar y Pagar Tasas</a>
+    </section>
+
+    <!-- Contenido Central -->
+    <div class="container">
+        <!-- Columna Izquierda: Trámites e Información -->
+        <div>
+            <div class="card">
+                <h3>Área de Ingresos Públicos - Trámites Online</h3>
+                <p>Gestioná tus trámites de manera ágil. Recordá que por seguridad jurídica, las liquidaciones y los informes de deuda online se emiten sin datos de titularidad (información confidencial).</p>
+                
+                <div class="tramites-grid">
+                    <div class="tramite-item">
+                        <h4>Tasas Municipales</h4>
+                        <p>Liquidación y pago de tasas mensuales.</p>
+                    </div>
+                    <div class="tramite-item">
+                        <h4>Automotores</h4>
+                        <p>Altas y bajas de vehículos por radicación.</p>
+                    </div>
+                    <div class="tramite-item">
+                        <h4>Libre Deuda</h4>
+                        <p>Solicitud de certificados vigentes.</p>
+                    </div>
+                    <div class="tramite-item">
+                        <h4>Inmuebles</h4>
+                        <p>Cambios de titular y envío por mail.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Transparencia y Gestión</h3>
+                <p>Accedé de forma clara y simplificada a la ejecución de presupuestos, uso de recursos y boletines oficiales.</p>
+                <br>
+                <a href="#" class="btn-action" style="background-color: var(--secondary-color);">Ver Presupuesto y Gastos en Detalle</a>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Accesos y Utilidades -->
+        <div>
+            <div class="card">
+                <h3>Preguntas Frecuentes</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">¿Cómo entender el cálculo de mi tasa municipal?</p>
+                <p style="font-size: 0.9rem; color: #6c757d;">Conocé cómo influyen los metros de frente, valuación, red cloacal e iluminación en tu boleta de forma resumida.</p>
+            </div>
+
+            <div class="card">
+                <h3>Buzón de Sugerencias</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;">Trabajamos para el pueblo. Envianos tu reclamo o sugerencia para que sea derivado al área correspondiente.</p>
+                <input type="text" placeholder="Tu correo electrónico" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <textarea placeholder="Escribí tu mensaje..." style="width: 100%; padding: 8px; height: 80px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                <button style="width: 100%; background: var(--primary-color); color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer;">Enviar Mensaje</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>Municipalidad de Brandsen - Provincia de Buenos Aires © 2026</p>
+        <p style="font-size: 0.8rem; color: #aaa; margin-top: 5px;">Diseño institucional minimalista, accesible y optimizado para conexiones rurales.</p>
+    </footer>
+
+</body>
+</html>
